@@ -21,8 +21,12 @@
 
         <StackPanel Grid.Row="1">
             <Button Content="Login"
-                    Command="{Binding LoginCommand}"/>
-            <Button Content="Register" />
+                    Command="{Binding LoginCommand}"
+                    Margin="25"
+                    Padding="10"/>
+            <Button Content="Register" 
+                    Margin="25 0"
+                    Padding="10"/>
         </StackPanel>
 
     </Grid>

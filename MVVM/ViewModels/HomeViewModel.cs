@@ -13,9 +13,9 @@ namespace LoginSection.MVVM.ViewModels
     {   
         public RelayCommand LoginCommand { get; }
 
-        public HomeViewModel(NavigationStore navigationStore)
+        public HomeViewModel(NavigationStore navigationStore, AccountStore accountStore)
         {
-            LoginCommand = new NavigateService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore));
+            LoginCommand = new NavigateService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore, accountStore));
         }
     }
 }

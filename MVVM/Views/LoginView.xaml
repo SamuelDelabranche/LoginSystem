@@ -4,15 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:LoginSection.MVVM.Views"
+             xmlns:components="clr-namespace:LoginSection.Components"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
     <Grid Margin="25">
         <StackPanel>
             <Label Content="Username" />
-            <TextBox Text="" />
-            <Label Content="Username" />
-            <PasswordBox PasswordChar="*" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Content="Password" />
+            <components:BindablePasswordBox Password="{Binding Password}"/>
             <Button Content="Valider"
                     Margin="25" 
                     Command="{Binding ValidCommand}"/>

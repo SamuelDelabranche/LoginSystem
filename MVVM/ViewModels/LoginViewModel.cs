@@ -11,12 +11,40 @@ namespace LoginSection.MVVM.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        public RelayCommand ValidCommand { get; }
+		private string _name;
+		public string Name
+		{
+			get
+			{
+				return _name;
+			}
+			set
+			{
+				_name = value;
+				OnPropertyChanged(nameof(Name));
+			}
+		}
+
+		private string _password;
+		public string Password
+		{
+			get
+			{
+				return _password;
+			}
+			set
+			{
+				_password = value;
+				OnPropertyChanged(nameof(Password));
+			}
+		}
+
+		public RelayCommand ValidCommand { get; }
         public RelayCommand CancelCommand { get; }
-        public LoginViewModel(NavigationStore navigationStore) 
+        public LoginViewModel(NavigationStore navigationStore, AccountStore accountStore) 
         {
-            ValidCommand = new NavigateService<AccountViewModel>(navigationStore, () => new AccountViewModel(navigationStore));
-            CancelCommand = new NavigateService<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
+			ValidCommand = new LoginCommand(accountStore, navigationStore, this);
+            CancelCommand = new NavigateService<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore, accountStore));
         }
     }
 }

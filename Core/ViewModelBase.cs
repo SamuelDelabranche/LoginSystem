@@ -8,5 +8,6 @@ namespace LoginSection.Core
 {
     public class ViewModelBase : Observable
     {
+        public virtual void Dispose() { }
     }
 }
