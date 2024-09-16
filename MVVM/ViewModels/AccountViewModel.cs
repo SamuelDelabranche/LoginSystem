@@ -1,4 +1,5 @@
-﻿using LoginSection.Core;
+﻿using LoginSection.Commands;
+using LoginSection.Core;
 using LoginSection.Stores;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace LoginSection.MVVM.ViewModels
     public class AccountViewModel : ViewModelBase
     {
         private readonly AccountStore _accountStore;
+        public RelayCommand LogoutCommand { get; }
 
         private string _Name;
 
@@ -25,6 +27,8 @@ namespace LoginSection.MVVM.ViewModels
         {
             _accountStore = accountStore;
             _Name = _accountStore.CurrentAccount.Name;
+
+            LogoutCommand = new LogoutCommand(accountStore, navigateStore);
 
             _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;
         }
